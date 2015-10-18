@@ -1813,6 +1813,8 @@ void graphicsLib::set_video_mode()
 {
 #ifdef DINGUX
     game_screen = SDL_SetVideoMode(RES_W, RES_H, 8, SDL_SWSURFACE);
+#elif defined(GCWZERO)
+    game_screen = SDL_SetVideoMode(RES_W, RES_H, 8, SDL_HWSURFACE | SDL_TRIPLEBUF);
 #elif defined(OPEN_PANDORA)
     game_screen = SDL_SetVideoMode(RES_W, RES_H, 8, SDL_HWSURFACE | SDL_DOUBLEBUF);
 #elif defined(ANDROID)

@@ -325,6 +325,7 @@ void draw::create_credits_text(graphicsLib_gSurface &surface)
 
     credits_list.push_back("--- PORTING ---");
     credits_list.push_back("DINGUX: SHIN-NIL");
+    credits_list.push_back("GCW ZERO: DAVID KNIGHT");
     credits_list.push_back("PANDORA: SIGMA NL");
     credits_list.push_back("PS2: RAGNAROK2040");
     credits_list.push_back("PS2: WOON-YUNG LIU");

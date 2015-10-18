@@ -56,7 +56,7 @@ game::game() : loaded_stage(NULL), _show_boss_hp(false), fps_timer(0)
 	currentStage = 1;
 	fps_counter = 0;
 	_frame_duration = 1000/80; // each frame must use this share of time
-    invencible_old_value = false;
+    invincible_old_value = false;
     _dark_mode = false;
     is_showing_boss_intro = false;
 }
@@ -94,7 +94,7 @@ void game::initGame()
 	players.at(0).reset_hp();
     players.at(1).set_is_player(true);
     players.at(1).reset_hp();
-    invencible_old_value = GAME_FLAGS[FLAG_INVENCIBLE];
+    invincible_old_value = GAME_FLAGS[FLAG_INVINCIBLE];
 
 }
 
@@ -409,20 +409,20 @@ bool game::test_teleport(classPlayer *test_player) {
 
     stage *temp_stage = loaded_stage;
     int currentMap = loaded_stage->get_current_map_number();
-	int temp_x, temp_y;
-	int temp_map_n=0;
-	int player_x = 0;
-	int transition_type = 0;
-	int lim1, lim2, lim3, lim4;
+    int temp_x, temp_y;
+    int temp_map_n=0;
+    int player_x = 0;
+    int transition_type = 0;
+    int lim1, lim2, lim3, lim4;
     int i=0;
-	bool MUST_TELEPORT = false;
-	int teleporter_dist = 0;
-	int link_type = -1;
+    bool MUST_TELEPORT = false;
+    int teleporter_dist = 0;
+    int link_type = -1;
 
     int px = test_player->getPosition().x + (test_player->get_size().width*0.5);
     int py = test_player->getPosition().y + (test_player->get_size().height*0.5) + (test_player->get_size().height*0.25);
 
-    int j = 0;
+    int j;
     for (j=0; j<STAGE_MAX_LINKS; j++) {
         if (stage_data.links[j].id_map_origin == -1 || stage_data.links[j].id_map_destiny == -1) {
             continue;
@@ -432,10 +432,10 @@ bool game::test_teleport(classPlayer *test_player) {
             if (currentStage == SKULLCASTLE5 && _last_stage_used_teleporters.find(i) != _last_stage_used_teleporters.end()) {
 				i++;
 				continue;
-			}
+            }
 
-
-            if ((stage_data.links[j].id_map_origin == currentMap && stage_data.links[j].pos_origin.x != -1)) {
+//compiler warning            if ((stage_data.links[j].id_map_origin == currentMap && stage_data.links[j].pos_origin.x != -1)) {
+            if ((stage_data.links[j].id_map_origin == currentMap)) {
 
                 temp_x = stage_data.links[j].pos_origin.x;
                 temp_y = stage_data.links[j].pos_origin.y;
@@ -448,7 +448,8 @@ bool game::test_teleport(classPlayer *test_player) {
 				}
 
 
-            } else if (stage_data.links[j].id_map_destiny == currentMap && stage_data.links[j].bidirecional == true && stage_data.links[j].pos_destiny.x != -1) {
+//            } else if (stage_data.links[j].id_map_destiny == currentMap && stage_data.links[j].bidirecional == true && stage_data.links[j].pos_destiny.x != -1) {
+            } else if (stage_data.links[j].id_map_destiny == currentMap && stage_data.links[j].bidirecional == true) {
                 temp_x = stage_data.links[j].pos_destiny.x;
                 temp_y = stage_data.links[j].pos_destiny.y;
                 temp_map_n = stage_data.links[j].id_map_origin;
@@ -978,9 +979,9 @@ void game::got_weapon()
         must_show_got_weapon = true;
 		game_save.finished_stages++;
     }
-    invencible_old_value = GAME_FLAGS[FLAG_INVENCIBLE]; // store old value in order to not set the flag to false if it is on my command-line parameter
-    //std::cout << "**** SAVE#1::invencible_old_value: " << invencible_old_value << ", GAME_FLAGS[FLAG_INVENCIBLE]: " << GAME_FLAGS[FLAG_INVENCIBLE] << std::endl;
-    GAME_FLAGS[FLAG_INVENCIBLE] = true;
+    invincible_old_value = GAME_FLAGS[FLAG_INVINCIBLE]; // store old value in order to not set the flag to false if it is on my command-line parameter
+    //std::cout << "**** SAVE#1::invincible_old_value: " << invincible_old_value << ", GAME_FLAGS[FLAG_INVINCIBLE]: " << GAME_FLAGS[FLAG_INVINCIBLE] << std::endl;
+    GAME_FLAGS[FLAG_INVINCIBLE] = true;
     //std::cout << "game::got_weapon - npc_name: " << npc_name << std::endl;
 
 
@@ -1085,8 +1086,8 @@ void game::leave_stage()
     //std::cout << "[[[freeze_weapon_effect(RESET #2)]]]" << std::endl;
     draw_lib.set_flash_enabled(false);
     freeze_weapon_effect = FREEZE_EFFECT_NONE;
-    GAME_FLAGS[FLAG_INVENCIBLE] = invencible_old_value;
-    //std::cout << "**** LOAD::invencible_old_value: " << invencible_old_value << ", GAME_FLAGS[FLAG_INVENCIBLE]: " << GAME_FLAGS[FLAG_INVENCIBLE] << std::endl;
+    GAME_FLAGS[FLAG_INVINCIBLE] = invincible_old_value;
+    //std::cout << "**** LOAD::invincible_old_value: " << invincible_old_value << ", GAME_FLAGS[FLAG_INVINCIBLE]: " << GAME_FLAGS[FLAG_INVINCIBLE] << std::endl;
 
     // show password
     input.clean();
@@ -1120,14 +1121,13 @@ void game::leave_game()
     if (dialogs_obj.show_leave_game_dialog() != true) { // cuidar se isso não cria loophole
         //std::cout << "++ DON'T LEAVE GAME" << std::endl;
         return;
+    } else {
+        //std::cout << "++ YES, LEAVE GAME" << std::endl;
+        if (fio.write_save(game_save) == false) {
+            std::cout << "*** Show savegame Error" << std::endl;
+            show_savegame_error();
+        }
     }
-
-    //std::cout << "++ YES, LEAVE GAME" << std::endl;
-    if (fio.write_save(game_save) == false) {
-        std::cout << "*** Show savegame Error" << std::endl;
-        show_savegame_error();
-    }
-
 #ifdef PSP
     sceKernelExitGame();
 #else

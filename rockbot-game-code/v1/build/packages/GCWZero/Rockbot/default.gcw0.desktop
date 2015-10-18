@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Type=Application
+Name=Rockbot 1.1.1
+Comment=A homage to Mega Man
+Exec=rockbot
+Icon=rockbot
+Categories=games;
+X-OD-Manual=readme.txt
+

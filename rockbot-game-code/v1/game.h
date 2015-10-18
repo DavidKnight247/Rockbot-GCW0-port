@@ -384,7 +384,7 @@ private:
     bool _show_boss_hp; // after set to true, will keep showing the boss HP bar on screen right side /**< TODO */
 
     short _drop_item_list[DROP_ITEM_COUNT];
-    bool invencible_old_value; // used to store flag value in order we don't loose it when setting to true due to temporary "got weapon" invencibility /**< TODO */
+    bool invincible_old_value; // used to store flag value in order we don't loose it when setting to true due to temporary "got weapon" invincibility /**< TODO */
     bool _dark_mode;                    // on dark mode we only show animation and projectiles
 
 #ifdef PSP

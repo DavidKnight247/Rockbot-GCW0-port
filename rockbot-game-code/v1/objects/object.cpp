@@ -929,11 +929,13 @@ void object::move(bool paused)
                     }
                 }
                 _timer_limit = timer.getTimer() + FRAMETIMER_DEATHRAY;
+#if 0 //TODO?? currently doesn't do anything
                 // checa por colisão
                 int px = (position.x - _state*TILESIZE) / TILESIZE;
                 if (direction == ANIM_DIRECTION_RIGHT) {
                     px = (position.x + _state*TILESIZE) / TILESIZE;
                 }
+#endif
             }
         }
     } else if (type == OBJ_TRACK_PLATFORM) {

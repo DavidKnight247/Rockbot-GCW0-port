@@ -443,7 +443,7 @@ V1.0.0:
 - on AI::jump when hit-head, there is an infinite loop while searching for parabole flex point (was using wrong X value)
 - add post-link command to strip symbols on PS2 build
 - change PS2 default keys so that circle is jump
-- invencibility flag being lost of player dies/continues
+- invincibility flag being lost of player dies/continues
 - projectile must have "direction" frames (editor and game, use heigth as new positions, no need to change file structure)
 - AI for Whale
 - giant rhino projectile/AI
@@ -485,7 +485,7 @@ V1.0.0:
 - AI: walk option - turn to player
 - some terrain block in magebot stage is not matching the graphic tiles
 - remove level 3 tiles from Ape's stage door
-- if dropped from stairs, can't grab it again until invencibility time ends or hits ground
+- if dropped from stairs, can't grab it again until invincibility time ends or hits ground
 - fix crash due to missing filepath
 - fall platform must return back only after player leaves it
 - music for ending dialogs
@@ -697,8 +697,8 @@ STAGES:
 - move draw_player_hp() from game to classplayer.show(), with an option to disable it (for ending, scenes and such)
 - fill new weapon energy bar when on jump on you got weapon sequence
 - new colorcycle loading method not working (not adding new colorcycles)
-- invencibility time of bosses is too high (must be ~600ms)
-- bosses invencibility time must show hit graphic as player
+- invincibility time of bosses is too high (must be ~600ms)
+- bosses invincibility time must show hit graphic as player
 - intangible while on stairs
 - fix 3rd level of transitioning (it is a bit off on first time)
 - fix near jumping on the parabola class
@@ -808,7 +808,7 @@ AI:
 - increase general damage (game is way too easy) - touch: 4, bomb: 6, NPC projectile: 2
 - improve ending credits (add stars, revise names)
 - character.cpp:466 - @TODO -> use simultaneous projectiles
-- find a better way for player with simultaneous shots to ignore invencibility time for second shot (use a serial key?)
+- find a better way for player with simultaneous shots to ignore invincibility time for second shot (use a serial key?)
 - minimum damage_points must be 1
 - always use CURRENT_FILE_FORMAT fio, for all files (config, save, data and stages-data)
 - get rid of all file-format (cpp) previous to 211
@@ -1186,15 +1186,15 @@ BETA 3:
 	OK - daisiebot
 	OK - apebot
 - implement ai_timer (to wait a while before executing AI again)
-- command line arguments for debug (quick_load and invencible)
+- command line arguments for debug (quick_load and invincible)
 - review stages to make sure all of them are playable
 - DATA: review all NPCs sprites
 - teleport while holding charged shot key is not working sometimes
 - fix ApeBot's IA (jump is being locked sometimes)
-- invencicle on spike + water, not returning to stand from jump-attack
+- invincicle on spike + water, not returning to stand from jump-attack
 - erase boss dialog before filling it's energy bar
 - door must block NPCs movement
-- invencible flag is also not damaging NPCs
+- invincible flag is also not damaging NPCs
 - bat shield when standing isn't working
 - EDITOR: not saving object speed
 - EDITOR: when using zoom, background color isn't filled to the 2x or 3x size

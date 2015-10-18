@@ -1935,7 +1935,7 @@ string character::getName(void) const
 // ********************************************************************************************** //
 st_position character::is_on_stairs(st_rectangle pos)
 {
-    if (_dropped_from_stairs == true) { // was dropped from stairs, can't grab again until invencibility time ends
+    if (_dropped_from_stairs == true) { // was dropped from stairs, can't grab again until invincibility time ends
         //if (is_player()) std::cout << "is_on_stairs - FALSE 1" << std::endl;
         return st_position(-1, -1);;
     }
@@ -2173,7 +2173,7 @@ int character::is_executing_effect_weapon()
 
 // is all projectiles are normal (-1 or 0) return the character's max_shots,
 // otherwise, find the lowest between all fired projectiles
-short character::get_projectile_max_shots()
+uint character::get_projectile_max_shots()
 {
     bool all_projectiles_normal = true;
     vector<projectile>::iterator it;
@@ -2293,7 +2293,7 @@ void character::clean_projectiles()
 void character::damage(unsigned int damage_points, bool ignore_hit_timer = false)
 {
     UNUSED(ignore_hit_timer);
-	if (is_player() && GAME_FLAGS[FLAG_INVENCIBLE] == true) {
+	if (is_player() && GAME_FLAGS[FLAG_INVINCIBLE] == true) {
 		return;
 	}
     if (damage_points < 1) { // minimum damage is 1. if you don't want damage, don't call this method, ok? :)

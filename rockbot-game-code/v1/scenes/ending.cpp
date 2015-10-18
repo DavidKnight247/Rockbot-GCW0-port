@@ -229,13 +229,13 @@ void ending::boss_rockbot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSurf
 
     gameControl.set_player_position(st_position(RES_W/3+TILESIZE*3, -TILESIZE*3), 1);
     lines[0] = "I CAN'T BELIEVE IT!!";
-    lines[1] = "YOU SHOULD NOT BE ABLE";
+    lines[1] = "YOU SHOULDN'T BE ABLE";
     lines[2] = "TO DEFEAT ME.";
     dialogs_obj.show_timed_dialog("destrin.png", true, lines, TIMED_DIALOG_DURATION, false);
 
-    lines[0] = "YOUR EGO IS YOUR.";
+    lines[0] = "YOUR EGO IS YOUR";
     lines[1] = "WEAKNESS, AND YOUR";
-    lines[2] = "PLACE IS PRISION.";
+    lines[2] = "PLACE IS IN PRISON.";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
 
@@ -276,13 +276,13 @@ void ending::boss_rockbot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSurf
     dialogs_obj.show_timed_dialog("betabot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "NO BETA, THIS";
-    lines[1] = "ISN'T HOW WE DO.";
+    lines[1] = "ISN'T WHAT WE DO.";
     lines[2] = "WE'RE NOT KILLERS.";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "VERY WELL, BUT";
-    lines[1] = "DON'T COUNT ME";
-    lines[2] = "TO COME HOME.";
+    lines[1] = "DON'T COUNT ON ME";
+    lines[2] = "COMING HOME.";
     dialogs_obj.show_timed_dialog("betabot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "THIS IS NOT THE END.";
@@ -304,7 +304,7 @@ void ending::boss_betabot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSurf
 
     lines[0] = "I AM, AS STRONG AS";
     lines[1] = "NEEDED TO PROTECT.";
-    lines[2] = "MAKE YOUR PRAYERS.";
+    lines[2] = "SAY YOUR PRAYERS.";
     dialogs_obj.show_timed_dialog("betabot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     gameControl.set_player_anim_type(ANIM_TYPE_ATTACK, 0);
@@ -315,8 +315,8 @@ void ending::boss_betabot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSurf
     input.waitTime(20);
 
     lines[0] = "NO, ROBOTS CAN'T";
-    lines[1] = "HARM US HUMANS!";
-    lines[2] = "STOP NOW!!";
+    lines[1] = "HARM HUMANS!";
+    lines[2] = "STOP!!";
     dialogs_obj.show_timed_dialog("destrin.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "I'M MORE THAN A";
@@ -375,10 +375,10 @@ void ending::boss_betabot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSurf
 
     lines[0] = "ROCK... ARE YOU,";
     lines[1] = "PROTECTING THIS..";
-    lines[2] = "THIS VILAIN!?";
+    lines[2] = "THIS VILLAIN!?";
     dialogs_obj.show_timed_dialog("betabot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
-    lines[0] = "IM AM ACTUALLY";
+    lines[0] = "I AM ACTUALLY";
     lines[1] = "PROTECTING YOU BROTHER.";
     lines[2] = "";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
@@ -403,12 +403,12 @@ void ending::boss_betabot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSurf
     lines[2] = "IS YOUR FAULT.";
     dialogs_obj.show_timed_dialog("betabot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
-    lines[0] = "I KNOW AND WON'T";
+    lines[0] = "I KNOW AND I WON'T";
     lines[1] = "ALLOW IT.";
     lines[2] = "WHERE WILL YOU GO?";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
-    lines[0] = "FOLLOW THE WIND,";
+    lines[0] = "I'LL FOLLOW THE WIND...";
     lines[1] = "TO BE FORGOTTEN,";
     lines[2] = "TO BE FREE.";
     dialogs_obj.show_timed_dialog("betabot.png", true, lines, TIMED_DIALOG_DURATION, false);
@@ -440,7 +440,7 @@ void ending::boss_candybot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSur
 
     gameControl.set_player_position(st_position(RES_W/3+TILESIZE*3, -TILESIZE*3), 1);
 
-    lines[0] = "HOW COULD SUCK A";
+    lines[0] = "HOW COULD SUCH A";
     lines[1] = "WEAK GIRL LIKE YOU";
     lines[2] = "DEFEAT ME?";
     dialogs_obj.show_timed_dialog("destrin.png", true, lines, TIMED_DIALOG_DURATION, false);
@@ -451,8 +451,8 @@ void ending::boss_candybot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSur
     dialogs_obj.show_timed_dialog("player3.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "WHAT WILL YOU DO NOW?";
-    lines[1] = "PUT ME INTO A PRISION?";
-    lines[2] = "I WILL ESCAPE SOON";
+    lines[1] = "PUT ME IN PRISON?";
+    lines[2] = "I WILL ESCAPE SOON!!";
     dialogs_obj.show_timed_dialog("destrin.png", true, lines, TIMED_DIALOG_DURATION, false);
 
 
@@ -488,14 +488,14 @@ void ending::boss_candybot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSur
     draw_lib.update_screen();
     input.waitTime(20);
 
-    lines[0] = "YOU CAN ESPACE,";
-    lines[1] = "BUT ME AND MY FRIENDS";
+    lines[0] = "YOU CAN ESCAPE,";
+    lines[1] = "BUT WE";
     lines[2] = "WILL DEFEAT YOU AGAIN.";
     dialogs_obj.show_timed_dialog("player3.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "IT IS OVER, KANOTUS.";
-    lines[1] = "YOU CAN'T WIN OVER";
-    lines[2] = "US ALL.";
+    lines[1] = "YOU CAN'T BEAT";
+    lines[2] = "ALL OF US.";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "THIS IS NOT THE END.";
@@ -515,8 +515,8 @@ void ending::boss_kittybot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSur
     lines[2] = "A MERE THUG!";
     dialogs_obj.show_timed_dialog("destrin.png", true, lines, TIMED_DIALOG_DURATION, false);
 
-    lines[0] = "THUG YOU CALL ME,";
-    lines[1] = "BUT THE TRUE THIEF";
+    lines[0] = "YOU CALL ME A THUG,";
+    lines[1] = "BUT THE TRUE THUG";
     lines[2] = "LIES BEFORE ME.";
     dialogs_obj.show_timed_dialog("player4.png", true, lines, TIMED_DIALOG_DURATION, false);
 
@@ -539,8 +539,8 @@ void ending::boss_kittybot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSur
     dialogs_obj.show_timed_dialog("destrin.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "I WAS PROGRAMMED BY";
-    lines[1] = "A PERSON THAT DID";
-    lines[2] = "NOT CARED ABOUT LAWS.";
+    lines[1] = "A PERSON WHO DIDN'T";
+    lines[2] = "CARE ABOUT LAWS.";
     dialogs_obj.show_timed_dialog("player4.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "STOP!";
@@ -593,18 +593,18 @@ void ending::boss_kittybot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSur
     input.waitTime(1000);
 
     lines[0] = "WHAT ARE YOU DOING,";
-    lines[1] = "YOUR IMBECILE?";
-    lines[2] = "LET ME JUST DO IT.";
+    lines[1] = "YOU IMBECILE!?";
+    lines[2] = "JUST LET ME DO IT.";
     dialogs_obj.show_timed_dialog("player4.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "I CAN'T.";
     lines[1] = "THE LAWS OF ROBOTICS";
-    lines[2] = "MAKE ME PROTECT HUMANS.";
+    lines[2] = "FORCE ME TO PROTECT HUMANS";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
 
-    lines[0] = "I HAVE NO CHOISE";
-    lines[1] = "AND NEITHER SHOULD";
+    lines[0] = "I HAVE NO CHOICE";
+    lines[1] = "AND NEITHER HAVE";
     lines[2] = "YOU, GIRL.";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
@@ -617,18 +617,18 @@ void ending::boss_kittybot(graphicsLib_gSurface &last_stage_bg, graphicsLib_gSur
     gameControl.show_player(1);
     draw_lib.update_screen();
 
-    lines[0] = "VERY VELL, I WILL";
+    lines[0] = "VERY WELL, I WILL";
     lines[1] = "LET YOU PLAY THIS GAME.";
     lines[2] = "GET HIM AND LEAVE, NOW!";
     dialogs_obj.show_timed_dialog("player4.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "WHY DO YOU NOT HAVE";
-    lines[1] = "THE ROBOTICS LAWS IN";
-    lines[2] = "YOUR CODE?";
+    lines[1] = "THE LAWS OF ROBOTICS";
+    lines[2] = "IN YOUR CODE?";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "THAT IS FOR ME TO KNOW,";
-    lines[1] = "AND FOR THIS TRASH THERE";
+    lines[1] = "AND FOR THIS TRASH";
     lines[2] = "TO FEAR.";
     dialogs_obj.show_timed_dialog("player4.png", true, lines, TIMED_DIALOG_DURATION, false);
 
@@ -865,13 +865,13 @@ void ending::lab() const
 	dialogs dialogs_obj;
 	std::string lines[3];
     lines[0] = "ROCK, YOU ARE BACK!";
-    lines[1] = "YOU SAVED THE CITY AND";
-    lines[2] = "THEY CALL YOU A HERO.";
+    lines[1] = "YOU SAVED THE CITY!";
+    lines[2] = "YOU ARE A HERO!";
     dialogs_obj.show_timed_dialog("candybot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
-    lines[0] = "THAT IS WHAT I WANTED.";
+    lines[0] = "THAT'S WHAT I WANTED.";
     lines[1] = "BUT STILL, I CAN'T";
-    lines[2] = "HELP AND FELL SAD.";
+    lines[2] = "HELP FEELING SAD.";
     dialogs_obj.show_timed_dialog("rockbot_sad.png", true, lines, TIMED_DIALOG_DURATION, false);
 
 	lines[0] = "WHY?";
@@ -885,8 +885,8 @@ void ending::lab() const
     dialogs_obj.show_timed_dialog("rockbot_sad.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "I MADE YOU WITH FREE";
-    lines[1] = "WILL AND THINKING,";
-    lines[2] = "SO LETS RESPECT HIM.";
+    lines[1] = "WILL AND THOUGHT,";
+    lines[2] = "SO LET'S RESPECT HIM.";
     dialogs_obj.show_timed_dialog("canotus_face.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     graphLib.set_colormap(-1);
@@ -912,7 +912,7 @@ void ending::look_sky_betabot() const
     std::string lines[3];
     // 19 x 28
 
-    lines[0] = "MEOWN. HEY MISTER!";
+    lines[0] = "MEOW. HEY MISTER!";
     lines[1] = "WHY ARE YOU HERE,";
     lines[2] = "LOOKING AT THE SKY?";
     dialogs_obj.show_timed_dialog("kittybot.png", true, lines, TIMED_DIALOG_DURATION, false);
@@ -928,11 +928,11 @@ void ending::look_sky_betabot() const
 
     lines[0] = "I AM NOW FREE,";
     lines[1] = "BUT WHAT SHOULD I DO";
-    lines[2] = "WITH SUCH THING?";
+    lines[2] = "WITH SUCH A THING?";
     dialogs_obj.show_timed_dialog("betabot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "OH, WORRY NOT!";
-    lines[1] = "AS, YOU SEE, I AM";
+    lines[1] = "YOU SEE, I HAVE";
     lines[2] = "PLENTY OF IDEAS.";
     dialogs_obj.show_timed_dialog("kittybot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
@@ -943,12 +943,12 @@ void ending::look_sky_betabot() const
 
     lines[0] = "KITTYBOT IS THE NAME,";
     lines[1] = "AND YOU MISTER,";
-    lines[2] = "ARE WHOM?";
+    lines[2] = "WHO ARE YOU?";
     dialogs_obj.show_timed_dialog("kittybot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     lines[0] = "BETA....";
     lines[1] = "NO, FROM NOW ON";
-    lines[2] = "THE NAME IS...";
+    lines[2] = "MY NAME IS...";
     dialogs_obj.show_timed_dialog("betabot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     timer.delay(2000);
@@ -971,11 +971,11 @@ void ending::look_sky_rockbot() const
     std::string lines[3];
 
     lines[0] = "BROTHER...";
-    lines[1] = "WHY DID YOU CHOSE";
-    lines[2] = "THIS VENGEANCE PATH?";
+    lines[1] = "WHY DID YOU CHOOSE";
+    lines[2] = "THIS PATH OF VENGEANCE?";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
-    lines[0] = "I CAN'T UNDERSTAND.";
+    lines[0] = "I DON'T UNDERSTAND.";
     lines[1] = "WE WERE SUPPOSED TO";
     lines[2] = "BE HEROES, BOTH OF US.";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
@@ -987,7 +987,7 @@ void ending::look_sky_rockbot() const
 
     lines[0] = "WILL YOU FIGHT";
     lines[1] = "ME FOR WHAT YOU";
-    lines[2] = "BELIEVE?";
+    lines[2] = "BELIEVE IN?";
     dialogs_obj.show_timed_dialog("rockbot.png", true, lines, TIMED_DIALOG_DURATION, false);
 
     timer.delay(2000);

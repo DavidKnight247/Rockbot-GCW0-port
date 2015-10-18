@@ -19,7 +19,7 @@ namespace format_v_3_0_1 {
         bool game_finished;             // stores if game was finished, so we can show more options to player
 
 
-        int get_default_keys(int keys_codes_copy[BTN_COUNT]) {
+        void get_default_keys(int keys_codes_copy[BTN_COUNT]) {
     #ifdef PLAYSTATION2
             for (int i=0; i<BTN_COUNT; i++) {
                 keys_codes_copy[i] = -1;
@@ -36,6 +36,22 @@ namespace format_v_3_0_1 {
             for (int i=0; i<BTN_COUNT; i++) {
                 keys_codes_copy[i] = -1;
             }
+    #elif GCWZERO
+            for (int i=0; i<BTN_COUNT; i++) {
+                keys_codes_copy[i] = -1;
+            }
+            keys_codes_copy[BTN_ATTACK] = SDLK_LCTRL;     //A
+            keys_codes_copy[BTN_JUMP]   = SDLK_LALT;      //B
+            keys_codes_copy[BTN_DASH]   = SDLK_LSHIFT;    //X
+            keys_codes_copy[BTN_SHIELD] = SDLK_SPACE;     //Y
+            keys_codes_copy[BTN_L]      = SDLK_TAB;       //L
+            keys_codes_copy[BTN_R]      = SDLK_BACKSPACE; //R
+            keys_codes_copy[BTN_QUIT]   = SDLK_ESCAPE;    //SELECT
+            keys_codes_copy[BTN_START]  = SDLK_RETURN;    //START
+            keys_codes_copy[BTN_LEFT]   = SDLK_LEFT;
+            keys_codes_copy[BTN_RIGHT]  = SDLK_RIGHT;
+            keys_codes_copy[BTN_UP]     = SDLK_UP;
+            keys_codes_copy[BTN_DOWN]   = SDLK_DOWN;
     #elif OPEN_PANDORA
             for (int i=0; i<BTN_COUNT; i++) {
                 keys_codes_copy[i] = -1;
@@ -67,7 +83,7 @@ namespace format_v_3_0_1 {
     #endif
         }
 
-        int get_default_buttons(int button_codes_copy[BTN_COUNT]) {
+        void get_default_buttons(int button_codes_copy[BTN_COUNT]) {
     #ifdef PLAYSTATION2
             button_codes_copy[BTN_SHIELD] = 0;
             button_codes_copy[BTN_DASH] = 3;
@@ -105,6 +121,8 @@ namespace format_v_3_0_1 {
             button_codes_copy[BTN_START] = 6;
     #elif OPEN_PANDORA
             button_codes_copy[BTN_JUMP] = SDLK_PAGEDOWN;
+    #elif GCWZERO
+            button_codes_copy[BTN_JUMP] = SDLK_LALT;
     #else
             for (int i=0; i<BTN_COUNT; i++) {
                 button_codes_copy[i] = -1;
@@ -140,12 +158,17 @@ namespace format_v_3_0_1 {
             input_type = INPUT_TYPE_DOUBLE;
             input_mode = INPUT_MODE_DIGITAL;
             get_default_keys(keys_codes);
-            get_default_buttons(button_codes;)
+            get_default_buttons(button_codes);
+    #elif GCWZERO
+            input_type = INPUT_TYPE_KEYBOARD;
+            input_mode = INPUT_MODE_DIGITAL;
+            get_default_keys(keys_codes);
+            get_default_buttons(button_codes);
     #elif OPEN_PANDORA
             input_type = INPUT_TYPE_KEYBOARD;
             input_mode = INPUT_MODE_DIGITAL;
             get_default_keys(keys_codes);
-            get_default_buttons(button_codes;)
+            get_default_buttons(button_codes);
     #else
             input_type = INPUT_TYPE_DOUBLE;
             get_default_keys(keys_codes);
@@ -156,6 +179,8 @@ namespace format_v_3_0_1 {
         E_PLATFORM get_current_platform() const {
     #ifdef DINGUX
             return PLATFORM_DINGUX;
+    #elif GCWZERO
+            return PLATFORM_GCWZERO;
     #elif LINUX
             return PLATFORM_LINUX;
     #elif OPEN_PANDORA

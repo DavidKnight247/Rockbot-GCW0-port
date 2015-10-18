@@ -38,7 +38,8 @@ struct object_colision;
  *
  */
 struct st_spriteFrame {
-    int delay; // time in milisseconds this frame will be shown /**< TODO */
+//    int delay; // time in milisseconds this frame will be shown /**< TODO */
+    uint delay; // time in milisseconds this frame will be shown /**< TODO */
     graphicsLib_gSurface frameSurface; /**< TODO */
 	st_spriteFrame() {
 		frameSurface.gSurface = NULL;
@@ -663,7 +664,8 @@ protected:
 
     virtual bool can_air_dash();
 
-    short get_projectile_max_shots();
+//    short get_projectile_max_shots();
+    uint get_projectile_max_shots();
 
 
 // members

@@ -40,7 +40,9 @@ int option_picker::pick()
 
     while (finished == false) {
         input.readInput();
-        if (input.p1_input[BTN_START] || input.p1_input[BTN_JUMP]) {
+// why do we quit when the user presses attack? It seems very unintuitive. Attack button should be select surely?
+//        if (input.p1_input[BTN_START] || input.p1_input[BTN_JUMP]) {
+        if (input.p1_input[BTN_START] || input.p1_input[BTN_JUMP] || input.p1_input[BTN_ATTACK]) {
             //std::cout << "option_picker::option_picker::END #1" << std::endl;
 			graphLib.eraseCursor(st_position(_position.x-CURSOR_SPACING, _position.y+(_pick_pos*CURSOR_SPACING)));
             draw_lib.update_screen();
@@ -67,7 +69,9 @@ int option_picker::pick()
                 }
 				graphLib.drawCursor(st_position(_position.x-CURSOR_SPACING, _position.y+(_pick_pos*CURSOR_SPACING)));
         }
-        if (input.p1_input[BTN_QUIT] || input.p1_input[BTN_ATTACK]) {
+// why do we quit when the user presses attack? It seems very unintuitive. Attack button should be select surely?
+//        if (input.p1_input[BTN_QUIT] || input.p1_input[BTN_ATTACK]) {
+        if (input.p1_input[BTN_QUIT]) {
             //std::cout << "option_picker::option_picker::END #2" << std::endl;
             return -1;
         }

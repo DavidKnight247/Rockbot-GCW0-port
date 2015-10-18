@@ -205,10 +205,10 @@ void scenesLib::intro()
     cut = graphLib.draw_progressive_text(10, line_position_y[0],"IN THE YEAR 20XX...", true);
     if (cut) { return; } cut = input.waitScapeTime(100); if (cut) { return; }
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[1],"STORM RAGES IN TOKYO, WITH EVIL", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[1],"A STORM RAGES IN TOKYO, WITH EVIL", true);
     if (cut) { return; } cut = input.waitScapeTime(100); if (cut) { return; }
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[2],"FORCES CAUSING ROBOTS GO BERSEK.", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[2],"FORCES CAUSING ROBOTS TO GO BESERK.", true);
     if (cut) { return; } cut = input.waitScapeTime(2000); if (cut) { return; }
 
     cut = input.waitScapeTime(INTRO_DIALOG_DURATION_TIME);
@@ -218,7 +218,7 @@ void scenesLib::intro()
     cut = graphLib.draw_progressive_text(10, line_position_y[0],"IN KYOTO PEACE LASTS,", true);
     if (cut) { return; } cut = input.waitScapeTime(100); if (cut) { return; }
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[1],"BUT FEAR RAISES WITH", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[1],"BUT FEAR RISES WITH", true);
     if (cut) { return; } cut = input.waitScapeTime(100); if (cut) { return; }
 
     cut = graphLib.draw_progressive_text(10, line_position_y[2],"RUMORS OF A REBELION.", true);
@@ -288,12 +288,12 @@ void scenesLib::intro()
 
 	graphLib.blank_area(0, 120, RES_W, 100);
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[0],"POLICE IS UNABLE TO RESIST,", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[0],"POLICE ARE UNABLE TO RESIST,", true);
 	if (cut) { return; }
 	cut = input.waitScapeTime(100);
 	if (cut) { return; }
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[1],"AND WHEN ARMY IS NEAR DEFEAT,", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[1],"AND WHEN THE ARMY IS NEAR DEFEAT,", true);
 	if (cut) { return; }
 	cut = input.waitScapeTime(100);
 	if (cut) { return; }
@@ -321,7 +321,7 @@ void scenesLib::intro()
     graphLib.draw_progressive_text(10, line_position_y[0],"INSPIRATED BY THE METAL HEROES", true);
     graphLib.draw_progressive_text(10, line_position_y[1],"FROM TOKYO, A YOUNG PROFESSOR", true);
     graphLib.draw_progressive_text(10, line_position_y[2],"DECIDES TO CREATE NEW POLICEMEN", true);
-    graphLib.draw_progressive_text(10, line_position_y[3],"MADE OF ELECTRONICS AND STEEL.", true);
+    graphLib.draw_progressive_text(10, line_position_y[3],"MADE FROM ELECTRONICS AND STEEL.", true);
     //graphLib.draw_progressive_text(10, line_position_y[4],"", true);
 
     cut = input.waitScapeTime(INTRO_DIALOG_DURATION_TIME);
@@ -337,24 +337,24 @@ void scenesLib::intro()
     draw_lib.update_screen();
 
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[0],"HIS FIRST CREATION IS CALLED", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[0],"HIS FIRST CREATION WAS CALLED", true);
 	if (cut) { return; }
 	cut = input.waitScapeTime(100);
 	if (cut) { return; }
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[1],"BETABUT, BUT IS UNSTABLE.", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[1],"BETABOT, BUT WAS UNSTABLE.", true);
 	if (cut) { return; }
 	cut = input.waitScapeTime(100);
 	if (cut) { return; }
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[2],"IMPROVING THE PROJECT, HE BUILDS", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[2],"IMPROVING THE DESIGN, HE BUILDS", true);
 	if (cut) { return; }
 	cut = input.waitScapeTime(500);
 	if (cut) { return; }
 
 	graphLib.copyArea(st_rectangle(43, 0, 21, INTRO_SURFACES[INTRO_SURFACES_KANOTUS].gSurface->h), st_position(226-graphLib.RES_DIFF_W, 95), &INTRO_SURFACES[INTRO_SURFACES_KANOTUS], &graphLib.gameScreen);
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[3],"A SECOND ONE, CALLED ROCKBOT.", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[3],"A SECOND ONE CALLED ROCKBOT.", true);
 	if (cut) { return; }
 	cut = input.waitScapeTime(100);
 	if (cut) { return; }
@@ -380,12 +380,12 @@ void scenesLib::intro()
 	cut = input.waitScapeTime(100);
 	if (cut) { return; }
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[1],"THE ENEMY ARMY RESIDES ON THE", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[1],"THE ENEMY ARMY RESIDES IN THE", true);
 	if (cut) { return; }
 	cut = input.waitScapeTime(100);
 	if (cut) { return; }
 
-    cut = graphLib.draw_progressive_text(10, line_position_y[2],"HANDS OF TWO UNEXPERIENCED", true);
+    cut = graphLib.draw_progressive_text(10, line_position_y[2],"HANDS OF TWO INEXPERIENCED", true);
 	if (cut) { return; }
 	cut = input.waitScapeTime(100);
 	if (cut) { return; }
@@ -460,11 +460,11 @@ void scenesLib::intro_presents() {
 
     graphLib.draw_centered_text(30, "NOTICE", graphLib.gameScreen, st_color(199, 215, 255));
     int pos_x = 70;
-    graphLib.draw_text(pos_x, 60, "THIS GAME WAS BEEN", graphLib.gameScreen);
+    graphLib.draw_text(pos_x, 60, "THIS GAME HAS BEEN", graphLib.gameScreen);
     graphLib.draw_text(pos_x, 80, "DEVELOPED BY FANS ", graphLib.gameScreen);
     graphLib.draw_text(pos_x, 100, "OF THE MEGAMAN SERIES", graphLib.gameScreen);
-    graphLib.draw_text(pos_x, 120, "AND IS NOT RELATED", graphLib.gameScreen);
-    graphLib.draw_text(pos_x, 140, "THE OFFICIAL SERIES", graphLib.gameScreen);
+    graphLib.draw_text(pos_x, 120, "AND IS NOT RELATED TO", graphLib.gameScreen);
+    graphLib.draw_text(pos_x, 140, "THE OFFICIAL SERIES.", graphLib.gameScreen);
     graphLib.draw_text(pos_x, 160, "ALL MEGAMAN RIGHTS", graphLib.gameScreen);
     graphLib.draw_text(pos_x, 180, "ARE PROPERTY OF CAPCOM.", graphLib.gameScreen);
 
@@ -1574,7 +1574,7 @@ void scenesLib::boss_intro(int pos_n) const {
         std::string str = &botname.at(i);
         std::locale settings;
         std::string boss_name;
-        for(short i = 0; i < str.size(); ++i) {
+        for(uint i = 0; i < str.size(); ++i) {
             boss_name += (std::toupper(str[i], settings));
         }
 

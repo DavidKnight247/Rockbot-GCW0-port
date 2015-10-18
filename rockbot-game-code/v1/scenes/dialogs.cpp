@@ -247,9 +247,9 @@ void dialogs::showGotArmorDialog(e_ARMOR_PIECES armor_type)
     int type = game_data.armor_pieces[armor_type].special_ability[game_save.selected_player];
     //std::cout << "player: " << game_save.selected_player << ", armor_type: " << armor_type << ", armor.ability: " << type << std::endl;
     if (armor_type == ARMOR_ARMS) {
-        type_str = "THIS IMPROVED ARMS WILL";
+        type_str = "THESE IMPROVED ARMS WILL";
         if (type == ARMOR_ABILITY_ARMS_ALWAYSCHARGED) {
-            ability_str = "FIRE ALWAYS CHARGED.";
+            ability_str = "ALWAYS FIRE CHARGED";
         } else if (type == ARMOR_ABILITY_ARMS_LASERBEAM) {
             ability_str = "CHARGE A LASER BEAM";
         } else if (type == ARMOR_ABILITY_ARMS_SUPERSHOT) {
@@ -259,11 +259,11 @@ void dialogs::showGotArmorDialog(e_ARMOR_PIECES armor_type)
         }
     } else if (armor_type == ARMOR_LEGS) {
         if (type == ARMOR_ABILITY_LEGS_AIRDASH) {
-            type_str = "THOSE LIGHTER LEGS";
+            type_str = "THESE LIGHTER LEGS";
             ability_str = "DASH IN MIDDLE-AIR.";
         } else if (type == ARMOR_ABILITY_LEGS_DOUBLEJUMP) {
-            type_str = "THOSE LIGHTER LEGS";
-            ability_str = "EXECUTE DOUBLE JUMP.";
+            type_str = "THESE LIGHTER LEGS";
+            ability_str = "EXECUTE A DOUBLE JUMP.";
         } else if (type == ARMOR_ABILITY_LEGS_SHORYUKEN) {
             type_str = "HOLD UP AND DASH";
             ability_str = "TO SHURYUKEN!";
@@ -271,7 +271,7 @@ void dialogs::showGotArmorDialog(e_ARMOR_PIECES armor_type)
     } else {
         type_str = "THIS FORTIFIED BODY WILL";
         if (type == ARMOR_ABILITY_BODY_EXTENDEDIMMUNITY) {
-            ability_str = "BE INTANGIBLE MORE TIME.";
+            ability_str = "BE INTANGIBLE FOR MORE TIME.";
         } else if (type == ARMOR_ABILITY_BODY_HALFDAMAGE) {
             ability_str = "TAKE HALF DAMAGE.";
         } else if (type == ARMOR_ABILITY_BODY_NOPUSHBACK) {

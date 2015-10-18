@@ -84,7 +84,7 @@ namespace format_v_3_0_1 {
 
         std::cout << ">>file_io::save_data_to_disk - size: " << data.size() << std::endl;
 
-        for (int i=0; i<data.size(); i++) {
+        for (uint i=0; i<data.size(); i++) {
             int block_size = sizeof(T);
             T data_in = data.at(i);
             fwrite(&data_in, block_size, 1, fp);

@@ -15,6 +15,7 @@ QT       -= gui
 CONFIG += win32
 #CONFIG += ps2
 #CONFIG += dingux
+#CONFIG += gcwzero
 #CONFIG += open_pandora
 #CONFIG += android
 #CONFIG += wii
@@ -170,6 +171,24 @@ dingux {
 	INCLUDES = -I$(OPENDINGUX_TOOLCHAIN_PREFIX)/include -I. -I../include -I.
 
 	QMAKE_POST_LINK += $(OPENDINGUX_TOOLCHAIN_PREFIX)bin/mipsel-linux-strip --strip-all rockbot.dge
+}
+
+
+gcwzero {
+	TARGET = rockbot
+
+	QMAKE_CC = mipsel-linux-gcc
+	QMAKE_CXX = mipsel-linux-g++
+	QMAKE_LINK = mipsel-linux-g++
+
+	QMAKE_CFLAGS += -pipe -g -Wall -W -fpermissive -D_REENTRANT -DGCWZERO -DHANDHELD
+	QMAKE_CXXFLAGS += -I$(GCWZERO_TOOLCHAIN_PREFIX)/include -pipe -g -Wall -W -fpermissive -D_REENTRANT -DGCWZERO -DHANDHELD
+
+	LIBS = $(SUBLIBS) -L$(GCWZERO_TOOLCHAIN_PREFIX)lib -lSDL_mixer -lSDL_image -lSDL_ttf `$(GCWZERO_TOOLCHAIN_PREFIX)/bin/sdl-config --libs` -lpthread
+
+	INCLUDES = -I$(GCWZERO_TOOLCHAIN_PREFIX)/include -I. -I../include -I.
+
+	QMAKE_POST_LINK += mipsel-linux-strip --strip-all rockbot
 }
 
 

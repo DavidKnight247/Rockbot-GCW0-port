@@ -219,6 +219,24 @@ struct st_game_config {
         keys_codes[BTN_RIGHT] = SDLK_RIGHT;
         keys_codes[BTN_UP] = SDLK_UP;
         keys_codes[BTN_DOWN] = SDLK_DOWN;
+#elif GCWZERO
+        input_type = INPUT_TYPE_KEYBOARD;
+        input_mode = INPUT_MODE_DIGITAL;
+        for (int i=0; i<BTN_COUNT; i++) {
+            keys_codes[i] = -1;
+        }
+        keys_codes[BTN_ATTACK] = SDLK_LCTRL;     //A
+        keys_codes[BTN_JUMP]   = SDLK_LALT;      //B
+        keys_codes[BTN_DASH]   = SDLK_LSHIFT;    //X
+        keys_codes[BTN_SHIELD] = SDLK_SPACE;     //Y
+        keys_codes[BTN_L]      = SDLK_TAB;       //L
+        keys_codes[BTN_R]      = SDLK_BACKSPACE; //R
+        keys_codes[BTN_QUIT]   = SDLK_ESCAPE;    //SELECT
+        keys_codes[BTN_START]  = SDLK_RETURN;    //START
+        keys_codes[BTN_LEFT]   = SDLK_LEFT;
+        keys_codes[BTN_RIGHT]  = SDLK_RIGHT;
+        keys_codes[BTN_UP]     = SDLK_UP;
+        keys_codes[BTN_DOWN]   = SDLK_DOWN;
 #elif OPEN_PANDORA
         input_type = INPUT_TYPE_KEYBOARD;
         input_mode = INPUT_MODE_DIGITAL;
@@ -268,6 +286,8 @@ struct st_game_config {
     E_PLATFORM get_current_platform() const {
 #ifdef DINGUX
         return PLATFORM_DINGUX;
+#elif GCWZERO
+        return PLATFORM_GCWZERO;
 #elif LINUX
         return PLATFORM_LINUX;
 #elif OPEN_PANDORA

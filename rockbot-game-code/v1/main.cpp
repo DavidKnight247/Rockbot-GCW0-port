@@ -32,7 +32,7 @@
 
 
 // ************** CODE AND DEBUG flags ************** //
-#define DEBUG_SHOW_FPS 1
+#define DEBUG_SHOW_FPS 0
 //#define PS2LOADFROMFIXEDPOINT 1
 //#define DISABLESOUND 1
 #define PS2LINK 1
@@ -53,7 +53,7 @@ bool have_save = false;
 #include "game.h"
 #include "scenes/ending.h"
 
-#if defined(LINUX) || defined(OSX)
+#if defined(LINUX) || defined(OSX) || GCWZERO
     #include <errno.h>
     #include <sys/stat.h>
     #include <unistd.h>
@@ -68,6 +68,8 @@ bool have_save = false;
 
 #if defined(DINGUX)
 	std::string EXEC_NAME("rockbot.dge");
+#elif defined(GCWZERO)
+	std::string EXEC_NAME("rockbot");
 #elif defined(WIN32)
 	std::string EXEC_NAME("rockbot.exe");
 #elif defined(PLAYSTATION2)
@@ -429,8 +431,8 @@ int main(int argc, char *argv[])
 
 			} else if (temp_argv == "--quickload") {
 				GAME_FLAGS[FLAG_QUICKLOAD] = true;
-			} else if (temp_argv == "--invencible") { // player have infinite HP
-				GAME_FLAGS[FLAG_INVENCIBLE] = true;
+			} else if (temp_argv == "--invincible") { // player have infinite HP
+				GAME_FLAGS[FLAG_INVINCIBLE] = true;
 			} else if (temp_argv == "--allweapons") { // player have all weapons available even if
 				GAME_FLAGS[FLAG_ALLWEAPONS] = true;
 			} else if (temp_argv == "--infinitejump") { // player can jump again and again
@@ -455,6 +457,9 @@ int main(int argc, char *argv[])
         SAVEPATH = std::string(getenv("HOME")) + "/.rockbot/";
         mkdir(SAVEPATH.c_str(), 0777);
         //std::cout << "SAVEPATH: " << SAVEPATH << ", mkdir-res: " << res << ", errno: " << errno << std::endl;
+    #elif GCWZERO
+        SAVEPATH = std::string(getenv("HOME")) + "/.rockbot/";
+        mkdir(SAVEPATH.c_str(), 0777);
     #elif WIN32
         SAVEPATH =  std::string(getenv("APPDATA")) + "/rockbot";
         std::cout << "SAVEPATH: " << SAVEPATH << std::endl;
@@ -556,7 +561,7 @@ int main(int argc, char *argv[])
     bool run_game = true;
 
     while (run_game) {
-        #if !defined(DINGUX)
+        #if !defined(DINGUX) && !defined(GCWZERO)
             timer.start_ticker();
         #endif
 
