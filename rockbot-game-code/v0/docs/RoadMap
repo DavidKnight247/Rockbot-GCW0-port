@@ -1,0 +1,117 @@
+------------------------------
+0.1 RC2:
+------------------------------
+
+- create a new projectile trajectory: tele-guided (follows player)
+- add a flag to projectiles allowing it to be destroyied when shot by player
+
+- create new IA for: WALL-GLUE
+
+- (RARE) player locked on jump after changing stages
+
+******* separar e revistar todas as funções de free (leave_game) ******* (missing main npc list freed)
+
+- short touches in left/right should make a partial movement (only 1 pixel and no walk animation, like original megaman)
+
+- set other data from stage in editor [comboboxes - create a generic function such as setCombobyString(string, QComboBox)]
+- save stage from data, instead of using the hardcoded generator
+
+
+- player sprites must use key-colorcycle instead of regular colors to make possible user defining its palette
+- add trees (level 3) on top of apebot's boos room
+- boss must do more damage (touch and shots) than regular NPCs
+- bats are not reacting to player approuch
+- music preload
+- convert loadMapNpcs to be like loadMapObjects (use map.obj file and a common struct for common properties)
+- find a way to balance better sound effects and background music volume
+- add names to weapons screen
+- usar L1 e R1 para trocar armas
+- explosão para timer bomb e dano por área
+- mapear tecla/botão
+- fazer Rockbot ter tiro carregável
+- fazer tiro normal do betabot ignorar o limite de tempo para acerto
+- (RETEST) player is dying again, after dying a first time, because of spikes
+- when jump is interrupted before maximum, must recalcule the gravity to fall a bit more slowly
+- (LOW) in transition screen, 3rd level is being drawn before player sprite
+- (SERIOUS) when transitioning the screen on scroll-lock or doss-door, if player is jumping and legs are not above the teleporter, next screen it will fall and die
+- mudar flag PLAYSTATION para PS2 - poderá ser útil para futura versão para PS3
+- separate main IA from IA sub-types
+- opção para escolher escala (disabled, normal, scale2X)
+- got weapon message, when do not have item, is in wrong Y position (too low)
+- IA genérica de chefe (anda, pula, atira)
+- bug in apebot IA makes it walk in air in the player height and do not stop
+- (SERIOUS) change tanks from different y positions to different x
+- (URGENT) problema com controles cima/baixo no menu em modo 1-player quando joystick está conectado (PC)
+- investigate why spikebot is not falling to the ground (gravity)
+
+- corrigir som novamente no Nintendo DS (usar outro nome para SFX_CURSOR, padronizar nomes para arquivos -> soundmap e usar loading dos MODs via FAT)
+- dividir o tileset em 2 arquivos para voltar a ter suporte no Nintendo DS
+
+-----------------------------------------------------------------------------------------
+0.2 PLANNING:
+-----------------------------------------------------------------------------------------
+- revisão completa do sistema de arquivos:
+  a) deve conter o mínimo de dados nos arquivos
+  b) a parte do mapa em sí dele ser isolada para poder ser portada. 
+  c) deve conter a versão para possibilitar um import em versão nova.
+  d) criar estrutura "stage" que engloba mapas, música de fundo, lista de teleportadores, etc
+
+- revisão completa de IA:
+  a) vários tipos de "estados"
+  b) cada IA é uma lista de estados e condições (blocked, hitten, hit player...) para mudar para outro estado
+  c) projéteis devem ser genéricos tanto para player como NPCs (remover de npc.h e colocar em projectile.h)
+  d) NPC deve pular se bloqueado e houver parte aberta ao alcance do pulo (flag can_jump)
+
+
+- revisão completa de colisão:
+  a) só deve ser executada uma única vez por ciclo
+  b) deve retornar uma estrutura de dados, com verificação no estado atual e no estado futuro (xinc, yinc)
+  c) a estrutura também deve dizer qual lado esbarrou (esquerda, direita, cima, baixo) em que (tipo e ponteiro para objeto)
+
+- objetos com tamanhos variáveis (tem suporte teórico, mas está limitado a 16x16 atualmente)
+
+- editor deve definir propriedades dos players (dano atingido tiro, dano atingido NPC, altura pulo, força tiro, nº de tiros)
+
+- mac port (http://guide.macports.org/)
+- take a look into porting to PSP (http://www.pcsp-emu.com/news.php)
+- android port
+- try to port to XBox/XBox360
+
+EDITOR:
+	- allow user to set p1 and p2 starting position (must be in same screen area - MAX_W and MAX_H of distance)
+	- ask to save on exit
+	- faster zoom (use mask)
+	- faster lock tile setting (use mask)
+	- add line tool
+	- add support for different NPC projectile graphics
+	- NPC shooting types (3 way-shoot, etc)
+    - determine several color-cycling for each map
+    - editor for intro (a image with n messages, if n5, reset text) with color-cycling (to/from color, black/white)
+    - allow to link each boss in boss-selection screen to a stage
+    - define background and points to stages for final boss (doctor)
+	- allow that a frame can be of more than only one animation type
+
+
+-------------------------------------------------------------------
+DONE
+- review/fix editor saving (it is mixing maps and npcs)
+- fix checkpoint default map number (must be zero)
+- object loading is wrong in game and editor (showing in the wrong stage/map)
+- map.teleporter type not working (is being set as teleporter instead of horizontal by default)
+- music not working on stage after beating boos of previous
+- colision player/npc/shoot not working for map > 0
+- must save teleporters in editor
+- if apebot jumps too close to the player, it goes to infinite (must fix the jump calc method)
+- crashing after dying in a new stage (after beating other) - probally checkpoint.map wrong
+- NPCs are not showing in game
+- saving map npc list is still buggy in editor
+- must show 3rd tile level on got weapon
+- only first map (0) is showing its npcs
+- fix boss door opening/closing (must not affect other level-3 tiles)
+- create a list of IA types with names (array of strings) and use it in editor instead of hard-coded in UI file, as now
+- create new IA for: GHOST/FISH, DOLPHIN
+- EDITOR: after adding a new npc, it must be added to the main npc list (avoid crashing)
+- EDITOR: when saving a npc, update its info in main npc list (check if needed or if we are only using ids) (avoid crashing)
+- EDITOR: add speed control in NPC (can make it faster/slower) min: 1, max: 8
+- EDITOR: add max range in NPC (min: 48, max: 320), used in zig-zag
+- game/IA use speed and range values

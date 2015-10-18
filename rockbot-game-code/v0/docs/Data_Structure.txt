@@ -1,0 +1,117 @@
+st_weapon { // infromation about a weapon/projectile
+	char[50] name;
+	char[512] graphic_filename;
+	int movement_type; // [LINEAR_TRAJECTORY]
+	int damage; // [1]
+}
+
+st_boss {
+	char[50] name;
+	char[512] face_filename;
+	char[512] sprite_filename;
+};
+
+st_stage {
+	char[512] bg_music_filename;
+	st_bossDescriptor boss;
+	int maps[4]; // hard-limit, want more, create more stages
+};
+
+
+st_map {
+	struct coordinate position; // not used for stage 0, 0-2, 0-2 for stages 1-9 and x/y for other
+};
+
+st_map_list {
+	st_map_npc_list *npc_list;
+	st_map_object_list *object_list;
+};
+
+st_npc_static { // stores the static information for NPC
+	char[4] weak_point_id;
+	int ia_type; // [IA_STAND]
+	short int HP;
+	char name[50];
+	short int shield;
+	short int can_shoot;
+	short int IA;
+	unsigned short int is_boss;
+	struct struct_move_info move_info;
+	struct struct_npcSpriteGraphics graphics;
+	st_npc *next;
+};
+
+st_npc_dynamic { // stores the dynamic information for NPC
+	st_npc_static* static_info; // the npc to get the static information from
+	st_weapon* weak_point;
+	short int HP;
+	short int x, y;
+	short int shots;
+	short int direction;
+	struct struct_npcSpriteGraphics *graphics;
+	struct sprite_struct *sprite_list;
+	struct struct_projectile projectile;
+	int timer;
+	struct player_struct *target;
+	short int first_run; // indicates if this NPC was stoped or already moved once - used for bosses to change music and display a dialog, for example
+        unsigned int hit_timer; // holds the time when player was hit, used to calc the time player will remain invulnerable
+	st_npc_dynamic *next;
+};
+
+st_object_static {
+	char name[20];
+	char filename[50];						// graphic file used on it
+	short int type;
+	int speed;				// used as speed for moving platform
+	int limit;				// used as range (pixels) for moving platform, visible time for disapearing block
+	int framesize_w;
+	int framesize_h;
+	int frame;				// indicates what is the used frame
+	struct coordinate start_point;
+};
+
+st_object_dynamic {
+	st_object_static* static_info;
+	int timer;				// used as time for disapearing block
+	int speed;				// used as speed for moving platform
+	int limit;				// used as range (pixels) for moving platform, visible time for disapearing block
+	int direction;			// used to check if moving away from oiginalpoint or moving to it
+	int distance;
+	int frame;				// indicates what is the used frame
+	struct coordinate position;
+	SDL_Surface *sprite;
+	struct st_object_dynamic *next;
+};
+
+st_player {
+	int max_shots; // [3]
+	int simultaneous_shots; // [1]
+	int jump_height; // [46]
+	int shot_damage_taken; // [1]
+	int touch_damage_taken; // [3]
+	int shot_damage_made; // [1]
+};
+
+st_game {
+	st_player p1_rockbot;
+	st_player p2_betabot;
+	st_player p3_candybot;
+};
+
+#define STAGES_NUMBER 19 // initial stage, 8 bosses, castle1x5 and castle2x5
+st_stageDescriptor[STAGES_NUMBER];
+
+**********************************************************************************
+                             DISK FILE STRUCTURE
+**********************************************************************************
+game {
+	001.stage, 002.stage... {
+		001.map, 002.map... {
+			001.npc, 002.npc...
+			001.obj, 002.obj...
+		}
+		001.tlp, 002.tlp // teleporters between maps
+	}
+001.npc, 002.npc...
+001.obj, 002.obj...
+}

@@ -1,0 +1,253 @@
+﻿I am the creator of Rockbot (rockbot.upperland.net) a mega man like game.
+I'm in the process of creating a second version for the game and,
+this time, I'll pick the enemies, bosses and stages by contest, so I'm inviting you to participate.
+So what do I need: drawings of enemies (they all need to be robots) or bosses or stage.
+You can send me (protoman@upperland.net) existing or new art.
+
+Here is an example of drawings Capcom used in Megaman 10 bosses:
+
+http://static.squarespace.com/static/5227cd84e4b02515a5badc7f/522e7089e4b0ae98001e1da2/522e709fe4b0ae98001e2417/1263513940000/blademen.jpg?format=original
+
+http://static.squarespace.com/static/5227cd84e4b02515a5badc7f/522e7089e4b0ae98001e1da2/522e709fe4b0ae98001e2414/1263513936000/sunmansolarman.jpg?format=original
+
+Your work will be licensed as open-source, free to share (Creacite Commons Share Alike).
+Thanks, and good luck!
+
+----------------------------------------------------------------------------------------------------
+VERSION 2
+----------------------------------------------------------------------------------------------------
+- história:
+Sem notícias de betabot, rock treina candy como companheira enquanto ajuda a polícia.
+Um dia, descobre-se que Dr. Destrin fugiu (primeira fase é na prisão, fazer referências
+a um sonho de liberdade) e logo novos inimigos aparecem para tentar destruir a cidade
+como vingança em nome de Destrin.
+
+
+ASSITIA!!!
+https://www.youtube.com/watch?v=Re0hTFgCT_E
+
+
+- estágios:
+	* gelo (desliza, avalanche, etc)
+	* storm/rain/lighthing (toad)
+	* fire/lava
+	* industrial (rocket/missile/sparkman)
+	* zoo (animals)
+	* russia (cossack)
+	* lizzard (like mm3 snakeman)
+		=> http://schalternate.deviantart.com/art/Dragon-Man-334882382
+		=> http://pl.tinypic.com/view.php?pic=2e4w7ci&s=7#.U2i5oFSx37E
+		=> http://thegia.com/archive/news/n990523/nff08.jpg
+		=> http://img2.wikia.nocookie.net/__cb20120718053537/finalfantasy/images/2/2b/FF5-Dragoon.png
+		=> http://i195.photobucket.com/albums/z196/kenshinmeowth/dragonman_zps24db1c46.png
+	* cosmos (signos/saint-seya) [low gravity like mm5 starman]
+
+
+- flag in map background - do not scroll (when changing maps) -> must be the same bg for all 3 maps, in this case
+
+- new file-format
+	* stage EFFECT flag (rain, snow, dark, storming, etc)
+	* must work from a new empty database:
+		* if projectile does not have graphic, use a 4x3 rectangle
+		* only load existing objects and npcs into the list (id != -1)
+
+	* intro
+	* "path" platform object
+	* add flag(int8) to define witch frame of ANIM_ATTACK will fire the projectile (default if last)
+	* sub-boss flag on NPC
+	* powerups
+		+ new item type (jump, attack, body)
+		+ on player, you must define what each powerup will change on it
+							JUMP           ATTACK              BODY
+							-----------------------------------------------------
+			* rockbot:      double         super-shot          half-damage
+			* candybot:     triple         laser-beam          2x intangible-time
+			* beta/dark:    air-dash       double-charged      no push-back
+			* kitty:        grab wall      temp-freeze-enemy   roll-attack
+
+
+- optimization:
+	* use Uint8 when possible
+	* use data directly from game_data and stage_data, when possible (is const)
+	* have a sub-list of NPCs and Objects that only includes the items on-screen
+		- change-scrolling must have a method that will check if cumulative change is >= tilesize
+		- if scroll reaches >= tilesize, it will re-create those lists
+
+
+- two initial characters to select (rock and candy), beating the game opens Beta (dark bot now) and kitty bot
+- rock not have the same movement than beta on first game, slower and smaller jump
+- candy have the movement of rock in first game
+
+- sub-bosses
+	- each map have a sub-boss-killed-flag (boolean), false by default, that is set once the sub-boss is killed
+	- the boss_door after it only opens if the sub-boss-killed-flag is active
+
+
+
+- special platform type, foolows a line
+	- have a tile in line that makes it fall (gutsman)
+	- can go left, right, up and down
+	- if line ends, return, otherwise loops
+	- this should be a kind of special item (not stored with other items to avoid confusion and filesystem issues)
+	- editor must show the item (translucent) while you are moving the mouse to place it
+	- filesystem:
+		- store as path (n tiles, direction)
+		- store "fail" points as coordinates
+
+- AI: add parameter to define what is the distance for player-near reaction
+
+- slippery (ice) terrain
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+new art:
+	* http://opengameart.org/content/platformer-art-pixel-redux
+	* http://opengameart.org/content/open-pixel-platformer-tiles-sprites [OPP PROJECT, CC-BY 3.0]
+	* http://www.dumbmanex.com/bynd_freestuff.html
+	* http://opengameart.org/content/onscreen-controls-8-styles
+	* http://opengameart.org/content/dawn-of-the-gods
+	* http://opengameart.org/content/prototyping-2d-pixelart-tilesets
+	* http://opengameart.org/content/db32-cave-tileset
+	* http://opengameart.org/content/old-frogatto-tile-art
+	* http://www.pinterest.com/pin/404901822719181891/
+
+
+SEQUENCE - Ape, Dynamite, Mage, Seahorse, Daisie, Techno, Mummy, Spike (Daisie, Seahorse, Ape x2, Spike)
+
+
+
+
+
+--------------------------
+VERSION 1.0.2
+--------------------------
+- colorcycle out of sync sometimes
+- get some free sound effects to replace Capcom ones
+
+
+- projectile _target_position must take target width/heigth in account
+
+- chain is bigger when facing direction right
+- fix charging while passing through doors (keep charge)
+
+- remove build warnings in PS2, PSP and Dingux
+- EDITOR: clean editor code (find slots that aren't used anymore)
+LOW - fix PSP build to use qmake
+LOW - HP bars must not be drawn under 3rd level of tiles
+- move all drawing methods such as hp-bar, icons, path, etc to draw class; so graphlib only deals with SDL making easier to change it to other graphical library
+OPTIMIZATION:
+	- OPTIMIZATION: use coverity
+	- OPTIMIZATION: use cppcheck (plugin for qtcreator: http://qt-project.org/forums/viewthread/26113)
+	- Optimize editor: in editor_area, do not alloc pixmaps every time, only when changing beaten flag or stage
+	- check for ALL places in game that can use game_data directly instead of creating new instances
+		- refactor code, so that "game_npcs" do not replicate(copy) data from game_data
+		- refactor code, so npcs and players do not replicate(copy) CONST data from game_data, only DYNAMIC such as position, state and HP
+	- use optimization tricks for SDL (http://osdl.sourceforge.net/main/documentation/rendering/SDL-optimizing.html)
+
+--------------------------
+VERSION 1.1
+--------------------------
+
+- metool shooting only when attack animation ends
+	- FILESYSTEM: must have a flag that indicates witch of the attack frames will start projectile
+
+
+- allow to show player even if stage/map are NULL
+- sub-boss (teleports in, can't leave room if its alive)
+- different icons for items depending on player (change colors, etc)
+- upgrade armor parts like Megaman-X
+	- beta: (double-jump, spike-immunity, double-charge)
+	- rock: (airdash, half-damage, hiper-buster)
+
+MEDIUM - add "flashing" effect to be used when shooting dynamite's weapon (similar to mm2 flashman's)
+- AI:
+	- when walk is blocked, check if hit a full-wall before jumping
+- AI ACTIONS:
+	- add 4 types of jump in AI - short, medium, long, moonwalk
+	- add jump-up (and jump-down together) to AI (parameter for jump up is gravity level)
+
+- all Megaman 1 features:
+    - option for automatic respawn after "x" seconds
+    - platform becomes intangible after X pixels, for TILESIZE pixels
+    - slippery ice terrain
+
+- implement bolts and shop (https://www.facebook.com/photo.php?fbid=432642990156602&set=a.114335308654040.27951.114325318655039&type=1&relevant_count=1&ref=nf)
+- verify possibility of a Dreamcast port: (http://dcemulation.org/?title=CodeBlocks_DC_Dev)
+    - load in memory only graphics used in the stage or spawn-npc for NPC and objects
+    - load in memory only the tiles used in the stage, not the whole tileset (use C++ std::map)
+- MacOSX port (?)
+- implement different frames size in game
+- load tileset image in memory only when drawing the map, then release it. for 3rd level, create a std::map<x, y> of tiles containing only the needed ones
+
+--------------------------
+VERSION 1.2
+--------------------------
+- all Megaman 2 features:
+    - 1/ballom item (slowly up)
+    - weapon that explodes releasing several NPCs (of same type)
+    - dark room that is iluminated if a fire-NPC is on visible_screen (heat)
+    - napalm projectile (heat)
+
+- all Megaman 3 features:
+    - guided projectile (hard)
+    - AI: grab/release player (magnet)
+    - magnet projectile - fist follow horizontal, then vertical (magnet)
+    - NPC that darkens screen if visible (shadow)
+    - laser projectile (gemini)
+    - killing an NPC can activate/deactivate a list of objects (big-snake)
+
+- AI ACTIONS:
+    - drop shell/shield (will loose protection)
+
+
+--------------------------
+VERSION 1.3
+--------------------------
+- all Megaman 4 features:
+    - stage with auto-scrolling
+	- background-image with auto-scrolling
+
+- all Megaman 5 features:
+    -
+
+- all Megaman 6 features:
+    -
+
+
+Android Notes:
+- If you want bigger touchscreen controls, use the SDL menu that appears for 3 seconds before game starts to modify the configuration
+
+Notes 1.0.1:
+- Removed down+jump for sliding on Android and added a button because touch controls aren't precise
+- Reworked Mummy Bot stage's graphics
+- Better speed for Rockbot by allowing decimal move-speed for players
+- Fix getting on stairs out of position
+- Enemies must not leave or enter water
+- Better handling of save game error showing warning to user
+- Enemies don't drop lifes anymore
+- Save icon in Playstation 2
+- Better speed in Dingux
+- Slower text in intro
+- Fix crashes for Seahorse moving in spikes and spawning enemeis
+- Fix items blocking player movement for a while
+- Drop objects preload avoids slowdowns during game
+- NPCs don't move on wall-locked regions
+
+
+
+
+----------------------------------------------------------------------------------------------------
+	 Changelog:
+----------------------------------------------------------------------------------------------------
+- highcolor colors
+- FILE: reduced (int8) size [maybe we do not use all now, but lets add it anyway]
+
+
+
+
+
+

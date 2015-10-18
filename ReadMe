@@ -1,0 +1,9 @@
+Rockbot GCW0 port.
+
+Thei is a port of Rockbot (http://sourceforge.net/projects/rockbot-game/) for the GCW0 handheld console.
+
+Compile instructions.
+
+I have used the V1 branch for the port, a compile script is available in v1/build/packages. Run GCWZero.sh to compile.
+
+You will require qmake and the gcw0 toolchain available from www.gcw-zero.com/develop.

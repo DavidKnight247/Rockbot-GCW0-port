@@ -1,0 +1,259 @@
+GIMP Palette
+Name: Rockbot
+Columns: 16
+#
+ 97  97  97 number 0
+ 39  27 143 number 1
+  0   0 171 number 2
+ 71   0 159 number 3
+143   0 119 number 4
+171   0  19 number 5
+167   0   0 number 6
+127  11   0 number 7
+ 67  47   0 number 8
+  0  71   0 number 9
+  0  81   0 number 10
+  0  63  23 number 11
+ 27  63  95 number 12
+  0   0   0 number 13
+196  93   0 number 14
+255 153 102 number 15
+188 188 188 number 16
+  0 115 239 number 17
+ 35  59 239 number 18
+131   0 243 number 19
+191   0 191 number 20
+231   0  91 number 21
+219  43   0 number 22
+203  79  15 number 23
+139 115   0 number 24
+  0 151   0 number 25
+  0 171   0 number 26
+  0 147  59 number 27
+  0 131 139 number 28
+255 102   0 number 29
+255  51   0 number 30
+204 204   0 number 31
+235 235 235 number 32
+ 63 191 255 number 33
+ 95 151 255 number 34
+167 139 253 number 35
+247 123 255 number 36
+255 119 183 number 37
+255 119  99 number 38
+255 155  59 number 39
+243 191  63 number 40
+131 211  19 number 41
+ 79 223  75 number 42
+ 88 248 152 number 43
+  0 235 219 number 44
+102  51 204 number 45
+ 51 102 255 number 46
+ 81  81  81 number 47
+230 255 0   number 48
+171 231 255 number 49
+199 215 255 number 50
+215 203 255 number 51
+255 199 255 number 52
+255 199 219 number 53
+255 191 179 number 54
+255 219 171 number 55
+255 231 163 number 56
+227 255 163 number 57
+171 243 191 number 58
+179 255 207 number 59
+159 255 243 number 60
+112 110 110 number 61
+255 192   0 number 62 gold_yellow
+255 234   0 number 63 yellow
+ 55 255   0 number 64 color_cycle1
+255   0 255 number 65 color_cycle2
+  0 255 255 number 66 color_cycle3
+255   0 123 number 67 color_cycle4
+  0 255 204 number 68 color_cycle5
+148  96 255 number 69 color_cycle5
+168  40  40 number 70 marrom
+224 128  56 number 71 laranja/marrom
+ 50   0  47 number 72 PRETO (REPLACE)
+ 46   8   6 number 73 PRETO (REPLACE)
+ 72   0   9 number 74
+ 23  11  85 number 75
+ 33  15  24 number 76 PRETO (REPLACE)
+ 38  17   1 number 77 PRETO (REPLACE)
+ 88   3   5 number 78
+105   0   1 number 79
+ 32  17  50 number 80 PRETO (REPLACE)
+  1  32   0 number 81 PRETO (REPLACE)
+ 76  10  27 number 82
+ 65  17   0 number 83
+  0  26 116 number 84
+124   2   4 number 85
+ 32  29  13 number 86 PRETO (REPLACE)
+ 56  24   0 number 87
+ 51  22  79 number 88
+ 55  25  63 number 89
+ 22  41  15 number 90
+  0  34 169 number 91
+ 12  48   0 number 92
+ 81  29   9 number 93
+110  22   1 number 94
+ 96  25  38 number 95
+ 74  31  64 number 96
+ 85  30  44 number 97
+ 35  45  46 number 98
+ 69  34  79 number 99
+145  12  79 number 100
+ 58  46   5 number 101
+ 74  39  38 number 102
+102  36  11 number 103
+ 90  41   8 number 104
+ 37  52  76 number 105
+ 70  46  42 number 106
+ 75  47  25 number 107
+ 76  40  98 number 108
+ 51  55  52 number 109
+152  31   0 number 110
+ 45  60  44 number 111
+139  31  59 number 112
+ 52  57  81 number 113
+118  45  18 number 114
+144  35  47 number 115
+ 97  46  82 number 116
+ 42  57 135 number 117
+122  41  60 number 118
+134  42  15 number 119
+ 64  57  73 number 120
+  0  80  40 number 121
+ 85  59   0 number 122
+ 34  50 241 number 123
+155  36  41 number 124
+137  42  54 number 125
+191  31  16 number 126
+ 73  65  39 number 127
+ 90  57  80 number 128
+ 47  78   0 number 129
+ 74  64  66 number 
+108  57  50 number 
+ 73  69  60 number 
+ 12  91  25 number 
+145  54   0 number 
+113  56  78 number 
+ 18  88  64 number 
+ 98  67  42 number 
+177  45  40 number 
+ 62  76  76 number 
+ 97  67  68 number 
+189  48   0 number 
+113  54 171 number 
+ 90  67 121 number 
+120  64  69 number 
+ 41  83 185 number 
+110  80  15 number 
+ 48  90 107 number 
+ 92  80  81 number 
+216  48  97 number 
+193  61  37 number 
+ 29 112  22 number 
+121  79  89 number 
+ 47 104 103 number 
+ 56 105  70 number 
+175  64 126 number 
+134  83  73 number 
+153  80  48 number 
+160  80  29 number 
+ 96  96  89 number 
+105  97  74 number 
+101  89 180 number 
+145  83 117 number 
+ 70 104 142 number 
+138  96  29 number 
+120  98  99 number 
+242  60 129 number 
+ 86 105 176 number 
+154 103  11 number 
+ 63 120 119 number 
+238  79  29 number 
+ 16 127 216 number 
+ 91 105 218 number 
+209  88  40 number 
+132 108  72 number 
+ 72 128  74 number 
+138 107  89 number 
+ 88 120 147 number 
+176 104  53 number 
+153 111  86 number 
+212 106   0 number 
+ 46 152  43 number 
+ 75 136 128 number 
+ 30 141 212 number 
+133 116 173 number 
+ 87 143  41 number 
+109 121 208 number 
+200 115   8 number 
+186 114  80 number 
+ 93 137 143 number 
+136 129 106 number 
+161 125  78 number 
+225 112  43 number 
+118 128 217 number 
+151 128 125 number 
+ 90 151 143 number 
+162 128 162 number 
+ 84 161  89 number 
+178 136  67 number 
+209 118 174 number 
+137 136 215 number 
+179 136 122 number 
+199 145   0 number 
+191 138 103 number 
+ 93 168 152 number 
+121 160 149 number 
+210 143  87 number 
+141 151 222 number 
+186 151 108 number 
+ 71 192  71 number 
+151 153 226 number 
+232 144  82 number 
+195 147 164 number 
+ 78 173 255 number 
+222 152  68 number 
+129 180 152 number 
+138 184  95 number 
+119 182 199 number 
+151 169 239 number 
+160 168 227 number 
+152 188  53 number 
+192 168 141 number 
+173 175 162 number 
+215 177  58 number 
+228 169 104 number 
+253 169  55 number 
+177 176 225 number 
+226 176 111 number 
+147 206  78 number 
+167 184 242 number 
+102 206 255 number 
+232 179 144 number 
+213 185 145 number 
+248 176 227 number 
+196 192 222 number 
+213 193 176 number 
+157 217 117 number 
+182 201 240 number 
+218 199 169 number 
+170 216 145 number 
+240 208 102 number 
+196 213 188 number 
+233 203 204 number 
+209 209 232 number 
+208 216 237 number 
+253 216 136 number 
+166 237 254 number 
+249 230  90 number 
+240 232 185 number 
+224 233 241 number 
+235 236 233 number 
+202 247 255 number 
+250 246 171 number 
+245 248 229 number 
+247 249 246 number 

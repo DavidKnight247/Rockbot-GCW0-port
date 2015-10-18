@@ -1,0 +1,283 @@
+----------------------------------------------------------------------------------------------------
+	 v 1.0 Completion Requirements:
+----------------------------------------------------------------------------------------------------
+
+- feature parity with 0.1 rc1
+- store the game into a single file
+- game file format must be version numbered (each version will be a .h file)
+- editor must convert from lower to higher versions
+- editor must show error if game version is higher than itself
+
+
+----------------------------------------------------------------------------------------------------
+	 TODO:
+----------------------------------------------------------------------------------------------------
+
+PERMANENT: (those bugs return often, should be fixed when possible, not associated to any release)
+- EDITOR: items and NPCs are being duplicated
+- crash when pressing ESC on select stage screen
+- character::show - error, animation_state value 19 is invalid (related to jump - state.animation_type: 2) (character::show - error, direction value -1 is invalid)
+
+
+BETA1
+- reduce hit push back
+- test all stages to assure all can be finished:
+	TECHNOBOT - scroll is stopping near the end of stage, review
+
+BETA2:
+- stage select cursor isn't blinking
+- player can't die on "got weapon" because hit a spike :)
+- in some parts/cases, scroll is locking (player need to move left/right so scroll works again)
+- after killed, when stage is reset, you can see the animation hit in the place where player will teleport back to the map
+- implement platform colision for character going up
+- BUG: leaving stairs is buggy
+- investigate macOSX port
+- common class for stuff like rectangles colision detection
+- projectile colision must use the projectile width/heigth (charged shot is missing the target sometimes)
+- all character frames must use a single image (better for color changes)
+- sound for semi-charged shot
+- fill ALL stage and boss dialogs
+- implement map checkpoint
+- implement items (coil/jet)
+- finish editor conversion, disable fields that won't be used in 1.0 version
+- implement use weapon tanks
+- implement config to choose p1 input (keyboard or joystick)
+- implement IA_WAIT
+- implement slide/dash key (c key)
+- command line arguments for debug (quick_load and invencible)
+- move character, classplayer and classnpc to character folder
+- finish the in-game menu
+- finish start screen (without 2-player game mode)
+- charged shot should count as three/max shots
+- editor is multiplying some map-NPCs
+- in some cases, jump+left/right near a wall, makes the player pass throught it
+- BUG: holding key on initial teleport is crashing game
+- BUG: zigzag npcs are not colliding with player
+- must not load projectile graphic if there is no need for it
+- investigate init_video flags (http://www.libsdl.org/cgi/docwiki.cgi/SDL_SetVideoMode)
+- use http://www.libsdl.org/cgi/docwiki.cgi/SDL_VideoInfo to get the max scale or better resolution to be set
+- use optimization tricks for SDL (http://osdl.sourceforge.net/main/documentation/rendering/SDL-optimizing.html)
+
+BETA3:
+- diferentiate dash (24 heigth) and slide (16 heigth)
+- editor must refresh ALL combos when adding a new item (player, npc, object, stage, map, etc)
+- diferences between rockbot and betabot (charged shot, double shot, double jump) [OK on file-format]
+- EDITOR: ALL input dialogs must respect the character limits defined in format.h and defines.h
+- android port
+- ps2 port
+- implement key mapping for input
+- refactor code, so that "game_npcs" do not replicate(copy) data from game_data
+- refactor code, so npcs and players do not replicate(copy) CONST data from game_data, only DYNAMIC such as position, state and HP
+- boss intro animation (in editor) [OK on file-format]
+- editor: allow multiple types for each image-frame (build a list of each animation type)
+- convert boss IA
+- convert NPC IA for game_data (chain of smaller parts)
+- clean editor code
+- check for ALL places in game that can use game_data directly instead of creating new instances
+
+
+BETA 4:
+- implement build project for native Dingoo
+- implement build project for PS2
+- implement build project for Dreamcast
+
+
+LATER:
+- optimization: use threads for parallel processing of move (player, npcs and projectile) and map rendering (when using 2-speed backgrounds)
+- use coverity/cppcheck
+- NPC colormap (use same graphic with different colors for different NPCs)
+- stage colormap (change some colors in stage, like rockman 6)
+- investigate dreamcast port
+- investigate xbox port
+- investigate macOSX port
+- investigate PSP port
+
+
+
+----------------------------------------------------------------------------------------------------
+	 Changelog:
+----------------------------------------------------------------------------------------------------
+BETA1:
+- hide map link numbers
+- fix rockbot ears color in stairs frame
+- check that all stages have checkpoints in valid points and in boss door
+stages - SEAHORSE - needs some adjusts in boss room (use map #3)
+stages - DYNAMITE - scroll is stopping in two points, review
+
+- player jump must not be interrupted because out of screen (top)
+- showing destrin logo before killing all 8 bosses (due to intro stage)
+- implement "demo stage"
+- jumping NPC is dying because out of screen :)
+- holding left/right on transitionScreen is STILL moving player to the wrong place !!!!!! :-/ (was missing reseting the last_scrolled, duh!)
+- faster walking sprite movement
+- fix 3 pixel diference between jump and jump_attack sprites
+- implement checkpoints
+- fix character leaving and returning to platform when the platform moves
+- fall/fky platforms must slowly return to the original place after activated (thus, must not be destroyed when out-of-screen)
+- charged shot is not swapping colors
+- implement objects movement
+- implement go-up platform (same as fall one, but to top direction)
+- fix platform moving player because of head
+- fix up/down platform colision (not coliding)
+- add OPEN_PANDORA build mode
+- if save exists, default cursor position must be "load" instead of "new" game
+- bg2 was not being shown in technobot's stage
+- finish colorcycle stages implementation for seahorse and daisiebot
+- when on "demo mode", boss gravity must not stop before half-screen
+- bug: platform object types are falling (gravity)
+- fix colorcycle showing weird colors
+- fix for menu being show and froze after stage selection (input.clean needed)
+- add open pandora keys
+- add #define for HANDLELD (Dingux/Pandora)
+- boss dialog must be controlled outside boss class, using game class instead (fix player being able to move during it)
+- reflected projectiles are not being destroyed (thus player can't shoot anymore)
+- find references to "./" and replace by FILEPATH
+- stage colorcycle optimization
+- fix for menu being show and froze after intro (input.clean needed)
+- walk-attack animation is changing quickly
+- shot is reflecting on shielded-NPC even when it is attacking
+- create face for Milonga
+- edit link error (was erasing links if same stop but not same map)
+- hiatus in horizontal transition scrolling
+- objects need gravity
+- when killing a boss that isn't any of the 8 that give weapon, player must teleport out of screen
+- implement boss-room dialog (OK on file-format)
+- do not show boss dialog if none was set
+- EDITOR: first character or object in editor is not setting the right image filename
+- implement all weapons usage
+- timed-bomb explosion (morph projectile concept)
+- shooting is not making any sound
+- implement map bg1, bg2 and bgcolor (different planes)
+- implement and review ending
+- if hit and pass a door, is moving to the wrong direction (must be using player direction, should use player movement)
+- show object makes player, npc, objects and 3rd level of tiles to blink
+- fix boss door
+- doors from left to right are not locking player/scroll
+- scroll has a kind of "kick" when moving after a door
+- from left to right scroll-lock is not showing the locked tiles (stops scrolling too early)
+- entering a room with doors is moving player to an unknown location
+- after shooting some times, you can't do it anymore (projectiles are not being destroyed?)
+- when pushed back by being hit, background is scrolling in the wrong direction
+- editor: there is a bug in stage dialog editor
+- weapon menu is not showing the right player HP on "normal weapon"
+- implement/test load(save) game
+- esc on start screen is not making game to leave
+- got_weapon for stages other than the 8 should just explode boss and then leave
+- crash when loading save and reopening a beaten stage
+- crash when using esc at stage selection screen
+- after killing apebot, is showing got weapon for "desert scorpion"
+- editor: implement weapon edit
+- editor: implement stage boss weapon selection
+- background color is using wrong data/colors
+- background repeat is failing for intro stage
+- rework intro
+- player shot is not making any sound
+- after falling, is not changing from ANIM_TYPE_JUMP to STAND
+- dialog accept jump button
+- weapons menu coloring selected item
+- weapons menu: add delay on change item
+- holding a key while on vertical teleport/transition makes the player go to an invalid position out of screen
+- implement NPC spawn (as attack or when killed - need adjusts in file and editor)
+- seems like game is loading the initial stage twice
+- use NPC spawn for mummy bot weapon (scorpion)
+- use L/R keys to change between weapons
+- implement freeze weapon
+- partial implementation for quake (missing damage on NPCs)
+- separation for execute and show in characters (used in freeze)
+- sound for charging shot
+- background1, background2 and background_color into map file-format (not used yet)
+- file-format review and freeze (changes will be made from 2.0 to 2.0.1, 2.0.2...)
+
+ALPHA1:
+- implement build project for Windows
+- implement build project for Dingux
+- some NPCs are not being shown in game (in editor are OK)
+- editor linking is always erasing the last link it just created
+- sometimes player is moving to the left without any keypress (seems related to keyboard, malfunction on mine maybe?)
+- when hitting the head on jump, must still be able to move on X axis
+- moving platforms are way too fast (player is moving back even if holding left/right)
+- stairs are not working when jumping to reach it
+- teleport fall is not reaching ground
+- change weapon to normal when finishing got_weapon
+- when changing stage, the maps are not changed
+- implement "get" items such as energy tanks and pills
+- implement "finish" for objects
+- fix item conversion (id is wrong by -1)
+- object graphic width is not respecting object declared width
+- holding the down+jump keeps sliding (needs to release jump button)
+- can slide in the middle air
+- move faces to graphLib and create a function show_face(st_position)
+- animations - two types, static (same position on map)or dynamic (follows the caracter)
+- implement shot reflection
+- implement player shield (z key)
+- BUG: shooting on stairs
+- BUG: left/right on stairs
+- staying on STAND instead of WALK after being hit
+- attack animation frame is lasting too little, needs a delay before changing back to stand/jump/walk
+- anim walk from RIGHT to LEFT direction is not always working (staying in anim stand)
+- BUG: after jumping, player stops moving to right until the right key is released and pressed again
+- if player holds down some kayes while on teleport, it stops falling
+- projectiles not being removed when hitting an enemy
+- killing boss is not working (something to do with new boss class...)
+- implement hit animation (look for '/// @TODO: hit animation')
+- implement character shield
+- implement some missing terrain types such as moving left/right
+- AI shoot and go must stop then turn back when colided
+- AI shoot and go is stopping after a while (reached player or is falling in the ground?)
+- AI fly zigzag always turning
+- AI shoot and go: too fast, do not respect side-walls
+- AI ghost: too fast
+- AI fish: stopped (missing water?)
+- fix blinking in projectiles
+- fill weapons
+- implement dash/slide
+- implement charged shot
+- fix editor stages number/name (use stage 0, use stages name)
+- "got weapon" screen after beating boss
+- allow user to select rockbot or betabot
+- centralize file-related methods into a .h (file/file.h) and I/O class (reader/write)
+- dialogs in editor
+- faces are not hardcoded into a enum (use string for graphics filename)
+- not-hardcoded intro dialogs
+- separate bosses into a special file (not in main_list.npc, but in game_bosses.npc and a special part in map_xxx_npc_list.dat)
+- implement boss class (face, icon, special IA, etc)
+- editor is placing multiple objects/npcs when clicking - must have a check(bool) for mouseRelease
+- implement dialogs
+- eyes on stage selection screen are wrong
+- enable multiple shots for player (3 at once)
+- esc/exit key on stage select
+- boss door animation
+- after killing a boss and returning to the stage, the boss is automatically killed again (missing npc reset?)
+- fix water (can't execute a jump)
+- fix slow scrolling problem in some stages
+- stay on top of staircases
+- implement boss intro
+- implement hp bar and menu
+- add scrolling support in map
+- implement jumping
+- implement sound/music
+- port colision detection
+- implement fps counter
+- implement game configuration structure
+- implement attack
+- implement projectiles
+- implement stage select
+- implement npcs
+- static list of character graphics
+- load game objects
+- list of objects graphics (the object class will use a pointer to this list)
+- load and show map objects
+- object-player colision
+- transition screen for scrolllock
+- load/unload stages when needed
+- create a new (better, simpler and C++ based) system for colorcycle
+- implement player-npc colision
+- implement hit blinking and push-back
+- fix double jump (but make it a future feature as a player flag)
+- implement player-death
+- do not leave the screen on top when jumping (limit it)
+- interrupt jump by releasing jump button
+- interrupt jump when hitting the head
+- implement player-death animation
+- fix eyes blinking animation
+- generic option-picker menu class (constructor with list of strings, pick() returns selected option-number and remove() cleans it from screen)
