@@ -1023,19 +1023,21 @@ void game::got_weapon()
 
 		soundManager.play_sfx(SFX_TELEPORT);
 		players.at(0).teleport_out();
-        players.at(0).set_show_hp(false);
+//testing        players.at(0).set_show_hp(false);
         input.waitTime(1000);
 
+//error hunting start here
 		/// @TODO
 		// show the "you got" screen
 		graphLib.blank_screen();
-        soundManager.load_music("got_weapon.mod");
+//        soundManager.load_music("got_weapon.mod");
 		graphLib.blink_screen(255, 255, 255);
 		graphLib.blank_screen();
-        soundManager.play_music();
+//        soundManager.play_music();
 		graphicsLib_gSurface temp_bg;
 		graphLib.surfaceFromFile(FILEPATH+"data/images/backgrounds/stage_boss_intro.png", &temp_bg);
 		graphLib.showSurface(&temp_bg);
+
 
         players.at(0).set_position(st_position(20, (RES_H * 0.5 - players.at(0).get_size().height/2)));
 		players.at(0).set_animation_type(ANIM_TYPE_ATTACK);
@@ -1069,7 +1071,8 @@ void game::got_weapon()
 		players.at(0).teleport_out();
 	}
     players.at(0).set_show_hp(true);
-
+//testing
+//error hunting finish here.
     game_save.stages[currentStage] = 1;
 
     leave_stage();
